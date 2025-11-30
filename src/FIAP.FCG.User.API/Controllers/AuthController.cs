@@ -1,8 +1,8 @@
-﻿using FIAP.FCG.Service.Dto.Login;
-using FIAP.FCG.Service.Interfaces;
+﻿using FIAP.FCG.User.Service.Dto.Login;
+using FIAP.FCG.User.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FIAP.FCG.API.Controllers;
+namespace FIAP.FCG.User.API.Controllers;
 
 [Route("[controller]")]
 [ApiController]

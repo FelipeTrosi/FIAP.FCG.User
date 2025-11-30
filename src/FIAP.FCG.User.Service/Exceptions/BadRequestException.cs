@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Service.Exceptions;
+﻿namespace FIAP.FCG.User.Service.Exceptions;
 public class BadRequestException : Exception
 {
     public IDictionary<string, string[]> Errors { get; }

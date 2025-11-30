@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.API.Middleware;
+﻿using FIAP.FCG.User.API.Middleware;
 
-namespace FIAP.FCG.API.Extensions;
+namespace FIAP.FCG.User.API.Extensions;
 
 public static class LogMiddlewareExtensions
 {

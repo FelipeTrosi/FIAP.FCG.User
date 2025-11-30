@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Domain.Enums.User
+﻿namespace FIAP.FCG.User.Domain.Enums.User
 {
     public enum AccessLevelEnum
     {

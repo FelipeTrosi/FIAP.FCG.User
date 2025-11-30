@@ -1,7 +1,7 @@
-﻿using FIAP.FCG.Infrastructure.CorrelationId;
+﻿using FIAP.FCG.User.Infrastructure.CorrelationId;
 using Microsoft.Extensions.Primitives;
 
-namespace FIAP.FCG.Infrastructure.Middlewares;
+namespace FIAP.FCG.User.Infrastructure.Middlewares;
 
 public class CorrelationMiddleware
 {

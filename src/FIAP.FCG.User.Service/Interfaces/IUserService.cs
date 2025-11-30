@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Service.Dto.User;
+﻿using FIAP.FCG.User.Service.Dto.User;
 
-namespace FIAP.FCG.Service.Interfaces;
+namespace FIAP.FCG.User.Service.Interfaces;
 public interface IUserService
 {
     ICollection<UserOutputDto> GetAll();

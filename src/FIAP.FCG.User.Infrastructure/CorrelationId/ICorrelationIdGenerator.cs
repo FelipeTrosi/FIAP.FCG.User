@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Infrastructure.CorrelationId;
+﻿namespace FIAP.FCG.User.Infrastructure.CorrelationId;
 
 public interface ICorrelationIdGenerator
 {

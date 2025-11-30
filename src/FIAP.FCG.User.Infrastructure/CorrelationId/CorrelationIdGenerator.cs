@@ -1,5 +1,5 @@
 ﻿
-namespace FIAP.FCG.Infrastructure.CorrelationId;
+namespace FIAP.FCG.User.Infrastructure.CorrelationId;
 
 public class CorrelationIdGenerator : ICorrelationIdGenerator
 {

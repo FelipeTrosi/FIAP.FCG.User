@@ -1,7 +1,7 @@
-﻿using FIAP.FCG.Infrastructure.Logger;
-using FIAP.FCG.Service.Exceptions;
+﻿using FIAP.FCG.User.Infrastructure.Logger;
+using FIAP.FCG.User.Service.Exceptions;
 
-namespace FIAP.FCG.API.Middleware;
+namespace FIAP.FCG.User.API.Middleware;
 
 public class ErrorHandlingMiddleware
 {

@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Infrastructure.Logger;
+﻿namespace FIAP.FCG.User.Infrastructure.Logger;
 
 public interface IBaseLogger<T>
 {

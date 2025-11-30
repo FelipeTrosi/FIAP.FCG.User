@@ -1,8 +1,8 @@
-﻿using FIAP.FCG.Domain.Entity;
+﻿using FIAP.FCG.User.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace FIAP.FCG.Infrastructure.Repository
+namespace FIAP.FCG.User.Infrastructure.Repository
 {
     public class ApplicationDbContext : DbContext
     {

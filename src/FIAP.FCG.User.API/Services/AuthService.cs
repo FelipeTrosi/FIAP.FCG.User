@@ -1,12 +1,12 @@
-﻿using FIAP.FCG.Domain.Enums.User;
-using FIAP.FCG.Service.Dto.Login;
-using FIAP.FCG.Service.Interfaces;
+﻿using FIAP.FCG.User.Domain.Enums.User;
+using FIAP.FCG.User.Service.Dto.Login;
+using FIAP.FCG.User.Service.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace FIAP.FCG.API.Services;
+namespace FIAP.FCG.User.API.Services;
 
 public class AuthService(IConfiguration configuration, IUserService service) : IAuthService
 {

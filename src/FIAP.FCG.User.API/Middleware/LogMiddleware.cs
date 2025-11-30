@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.API.Middleware;
+﻿namespace FIAP.FCG.User.API.Middleware;
 
 public class LogMiddleware
 {

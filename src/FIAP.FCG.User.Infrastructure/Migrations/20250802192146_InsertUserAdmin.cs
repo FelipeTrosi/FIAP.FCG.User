@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace FIAP.FCG.Infrastructure.Migrations
+namespace FIAP.FCG.User.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InsertUserAdmin : Migration

@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Service.Dto.Game
+﻿namespace FIAP.FCG.User.Service.Dto.Game
 {
     /// <summary>
     /// DTO que representa os dados de saída de um jogo cadastrado no sistema.

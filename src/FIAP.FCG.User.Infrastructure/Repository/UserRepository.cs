@@ -1,7 +1,7 @@
-﻿using FIAP.FCG.Domain.Entity;
-using FIAP.FCG.Infrastructure.Repository.Interfaces;
+﻿using FIAP.FCG.User.Domain.Entity;
+using FIAP.FCG.User.Infrastructure.Repository.Interfaces;
 
-namespace FIAP.FCG.Infrastructure.Repository
+namespace FIAP.FCG.User.Infrastructure.Repository
 {
     public class UserRepository : EFRepository<UserEntity>, IUserRepository
     {

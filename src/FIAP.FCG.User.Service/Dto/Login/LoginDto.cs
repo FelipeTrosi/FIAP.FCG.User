@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Service.Dto.Login;
+﻿namespace FIAP.FCG.User.Service.Dto.Login;
 
 /// <summary>
 /// DTO usado para autenticação de usuários no sistema.

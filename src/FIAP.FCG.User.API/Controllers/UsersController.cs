@@ -1,11 +1,11 @@
-﻿using FIAP.FCG.Service.Dto.User;
-using FIAP.FCG.Service.Interfaces;
+﻿using FIAP.FCG.User.Service.Dto.User;
+using FIAP.FCG.User.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace FIAP.FCG.API.Controllers;
+namespace FIAP.FCG.User.API.Controllers;
 
 [Route("[controller]")]
 [ApiController]

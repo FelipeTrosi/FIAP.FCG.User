@@ -1,8 +1,8 @@
-﻿using FIAP.FCG.Domain.Entity;
+﻿using FIAP.FCG.User.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FIAP.FCG.Infrastructure.Repository.Configurations;
+namespace FIAP.FCG.User.Infrastructure.Repository.Configurations;
 
 public class UserConfiguration : IEntityTypeConfiguration<UserEntity>
 {

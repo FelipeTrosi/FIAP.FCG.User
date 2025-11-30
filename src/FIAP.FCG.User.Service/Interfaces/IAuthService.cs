@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Service.Dto.Login;
+﻿using FIAP.FCG.User.Service.Dto.Login;
 
-namespace FIAP.FCG.Service.Interfaces;
+namespace FIAP.FCG.User.Service.Interfaces;
 
 public interface IAuthService
 {

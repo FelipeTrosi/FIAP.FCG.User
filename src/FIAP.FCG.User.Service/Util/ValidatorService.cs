@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FIAP.FCG.Service.Util
+namespace FIAP.FCG.User.Service.Util
 {
     public static class ValidatorService
     {

@@ -1,11 +1,11 @@
-﻿using FIAP.FCG.Infrastructure.Logger;
-using FIAP.FCG.Infrastructure.Repository.Interfaces;
-using FIAP.FCG.Service.Dto.Game;
-using FIAP.FCG.Service.Exceptions;
-using FIAP.FCG.Service.Interfaces;
-using FIAP.FCG.Service.Util;
+﻿using FIAP.FCG.User.Infrastructure.Logger;
+using FIAP.FCG.User.Infrastructure.Repository.Interfaces;
+using FIAP.FCG.User.Service.Dto.Game;
+using FIAP.FCG.User.Service.Exceptions;
+using FIAP.FCG.User.Service.Interfaces;
+using FIAP.FCG.User.Service.Util;
 
-namespace FIAP.FCG.Service.Services;
+namespace FIAP.FCG.User.Service.Services;
 
 public class GameService(IBaseLogger<GameService> logger, IGameRepository repository) : IGameService
 {

@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Service.Dto.Game;
+﻿using FIAP.FCG.User.Service.Dto.Game;
 
-namespace FIAP.FCG.Service.Interfaces;
+namespace FIAP.FCG.User.Service.Interfaces;
 public interface IGameService
 {
     ICollection<GameOutputDto> GetAll();

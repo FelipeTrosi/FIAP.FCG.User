@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Domain.Entity;
+﻿using FIAP.FCG.User.Domain.Entity;
 
-namespace FIAP.FCG.Infrastructure.Repository.Interfaces;
+namespace FIAP.FCG.User.Infrastructure.Repository.Interfaces;
 
 public interface IGameRepository : IRepository<GameEntity>
 {

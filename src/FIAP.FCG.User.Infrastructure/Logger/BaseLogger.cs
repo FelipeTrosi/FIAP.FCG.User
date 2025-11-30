@@ -1,7 +1,7 @@
-﻿using FIAP.FCG.Infrastructure.CorrelationId;
+﻿using FIAP.FCG.User.Infrastructure.CorrelationId;
 using Microsoft.Extensions.Logging;
 
-namespace FIAP.FCG.Infrastructure.Logger;
+namespace FIAP.FCG.User.Infrastructure.Logger;
 
 public class BaseLogger<T> : IBaseLogger<T>
 {

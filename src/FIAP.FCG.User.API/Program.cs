@@ -1,5 +1,5 @@
-using FIAP.FCG.API.Extensions;
-using FIAP.FCG.Infrastructure.Repository;
+using FIAP.FCG.User.API.Extensions;
+using FIAP.FCG.User.Infrastructure.Repository;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 
-    var serviceXml = Path.Combine(AppContext.BaseDirectory, "FIAP.FCG.Service.xml");
+    var serviceXml = Path.Combine(AppContext.BaseDirectory, "FIAP.FCG.User.Service.xml");
     if (File.Exists(serviceXml))
         c.IncludeXmlComments(serviceXml);
 });

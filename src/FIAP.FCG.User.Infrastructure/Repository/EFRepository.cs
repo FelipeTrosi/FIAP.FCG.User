@@ -1,8 +1,8 @@
-﻿using FIAP.FCG.Domain.Entity;
-using FIAP.FCG.Infrastructure.Repository.Interfaces;
+﻿using FIAP.FCG.User.Domain.Entity;
+using FIAP.FCG.User.Infrastructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace FIAP.FCG.Infrastructure.Repository
+namespace FIAP.FCG.User.Infrastructure.Repository
 {
     public class EFRepository<T>(ApplicationDbContext context) : IRepository<T> where T : EntityBase
     {

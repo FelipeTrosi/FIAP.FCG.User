@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Infrastructure.CorrelationId;
+﻿using FIAP.FCG.User.Infrastructure.CorrelationId;
 
-namespace FIAP.FCG.API.Extensions;
+namespace FIAP.FCG.User.API.Extensions;
 
 public static class ServiceCollectionExtension
 {

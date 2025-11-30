@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Service.Dto.Game;
+﻿namespace FIAP.FCG.User.Service.Dto.Game;
 
 /// <summary>
 /// DTO utilizado para cadastrar um novo jogo no sistema.

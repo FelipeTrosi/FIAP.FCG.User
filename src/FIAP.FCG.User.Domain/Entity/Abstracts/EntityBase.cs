@@ -1,4 +1,4 @@
-﻿namespace FIAP.FCG.Domain.Entity
+﻿namespace FIAP.FCG.User.Domain.Entity
 {
     public abstract class EntityBase
     {

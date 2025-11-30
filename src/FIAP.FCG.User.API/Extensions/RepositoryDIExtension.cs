@@ -1,7 +1,7 @@
-﻿using FIAP.FCG.Infrastructure.Repository;
-using FIAP.FCG.Infrastructure.Repository.Interfaces;
+﻿using FIAP.FCG.User.Infrastructure.Repository;
+using FIAP.FCG.User.Infrastructure.Repository.Interfaces;
 
-namespace FIAP.FCG.API.Extensions
+namespace FIAP.FCG.User.API.Extensions
 {
     public static class RepositoryDIExtension
     {

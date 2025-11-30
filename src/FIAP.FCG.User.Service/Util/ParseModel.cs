@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace FIAP.FCG.Service.Util;
+namespace FIAP.FCG.User.Service.Util;
 
 public static class ParseModel
 {

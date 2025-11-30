@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Domain.Enums.User;
+﻿using FIAP.FCG.User.Domain.Enums.User;
 
-namespace FIAP.FCG.Service.Dto.User;
+namespace FIAP.FCG.User.Service.Dto.User;
 
 /// <summary>
 /// Representa os dados de saída de um usuário cadastrado.

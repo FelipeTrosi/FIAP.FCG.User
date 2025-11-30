@@ -1,10 +1,10 @@
-﻿using FIAP.FCG.Infrastructure.Middlewares;
+﻿using FIAP.FCG.User.Infrastructure.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace FIAP.FCG.API.Extensions
+namespace FIAP.FCG.User.API.Extensions
 {
     public static class JwtAuthenticationExtension
     {

@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Domain.Enums.User;
+﻿using FIAP.FCG.User.Domain.Enums.User;
 
-namespace FIAP.FCG.Domain.Entity
+namespace FIAP.FCG.User.Domain.Entity
 {
     public class UserEntity : EntityBase
     {

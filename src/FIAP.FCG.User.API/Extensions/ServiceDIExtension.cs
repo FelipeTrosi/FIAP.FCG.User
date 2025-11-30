@@ -1,9 +1,9 @@
-﻿using FIAP.FCG.API.Services;
-using FIAP.FCG.Infrastructure.Logger;
-using FIAP.FCG.Service.Interfaces;
-using FIAP.FCG.Service.Services;
+﻿using FIAP.FCG.User.API.Services;
+using FIAP.FCG.User.Infrastructure.Logger;
+using FIAP.FCG.User.Service.Interfaces;
+using FIAP.FCG.User.Service.Services;
 
-namespace FIAP.FCG.API.Extensions; 
+namespace FIAP.FCG.User.API.Extensions; 
 
 public static class ServiceDIExtension
 {

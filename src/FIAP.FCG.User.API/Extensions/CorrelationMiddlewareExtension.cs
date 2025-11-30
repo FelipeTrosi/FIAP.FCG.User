@@ -1,6 +1,6 @@
-﻿using FIAP.FCG.Infrastructure.Middlewares;
+﻿using FIAP.FCG.User.Infrastructure.Middlewares;
 
-namespace FIAP.FCG.API.Extensions;
+namespace FIAP.FCG.User.API.Extensions;
 
 public static class CorrelationMiddlewareExtension
 {

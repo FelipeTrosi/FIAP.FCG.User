@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using Serilog.Events;
 
-namespace FIAP.FCG.API.Extensions;
+namespace FIAP.FCG.User.API.Extensions;
 
 public static class DatadogLoggerExtension
 {
