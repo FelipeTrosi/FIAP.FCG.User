@@ -7,7 +7,6 @@ namespace FIAP.FCG.User.API.Extensions
     {
         public static IServiceCollection AddRepositoryDI(this IServiceCollection services)
         {
-            services.AddScoped<IGameRepository, GameRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             return services;

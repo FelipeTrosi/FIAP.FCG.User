@@ -20,7 +20,7 @@ public class UserController(IUserService service) : ControllerBase
     /// <response code="200">Usuário criado com sucesso.</response>
     /// <response code="400">Dados inválidos.</response>
     [HttpPost]
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     public IActionResult Post([FromBody] UserCreateDto input)
     {
         _service.Create(input);
@@ -34,7 +34,7 @@ public class UserController(IUserService service) : ControllerBase
     /// <response code="200">Usuário atualizado com sucesso.</response>
     /// <response code="404">Usuário não encontrado.</response>
     [HttpPut]
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     public IActionResult Put([FromBody] UserUpdateDto input)
     {
         _service.Update(input);
@@ -48,7 +48,7 @@ public class UserController(IUserService service) : ControllerBase
     /// <response code="200">Usuário removido com sucesso.</response>
     /// <response code="404">Usuário não encontrado.</response>
     [HttpDelete("{id:long}")]
-    [Authorize(Policy = "Admin")]
+    //[Authorize(Policy = "Admin")]
     public IActionResult Delete(long id)
     {
         _service.DeleteById(id);
@@ -62,7 +62,7 @@ public class UserController(IUserService service) : ControllerBase
     /// <response code="200">Usuário encontrado.</response>
     /// <response code="404">Usuário não encontrado.</response>
     [HttpGet("GetById/{id:long}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetById(long id)
     {
         return Ok(_service.GetById(id));
@@ -73,7 +73,7 @@ public class UserController(IUserService service) : ControllerBase
     /// </summary>
     /// <response code="200">Lista de usuários retornada com sucesso.</response>
     [HttpGet("GetAll")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetAll()
     {
         return Ok(_service.GetAll());
