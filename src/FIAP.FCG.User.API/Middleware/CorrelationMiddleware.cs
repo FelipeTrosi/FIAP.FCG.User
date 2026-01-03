@@ -10,7 +10,6 @@ public class CorrelationMiddleware
 
     public CorrelationMiddleware(RequestDelegate next) => _next = next;
 
-
     public async Task Invoke(HttpContext context, ICorrelationIdGenerator correlationIdGenerator)
     {
         var correlationId = GetCorrelationId(context, correlationIdGenerator);

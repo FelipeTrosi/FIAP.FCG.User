@@ -17,6 +17,7 @@ COPY FIAP.FCG.User.Service/FIAP.FCG.User.Service.csproj FIAP.FCG.User.Service/
 # Restaurar dependências
 RUN dotnet restore FIAP.FCG.User.API/FIAP.FCG.User.API.csproj
 RUN dotnet restore FIAP.FCG.User.Infrastructure/FIAP.FCG.User.Infrastructure.csproj 
+RUN dotnet restore FIAP.FCG.User.Service/FIAP.FCG.User.Service.csproj 
 
 # Copiar o restante dos arquivos
 COPY FIAP.FCG.User.API/ FIAP.FCG.User.API/

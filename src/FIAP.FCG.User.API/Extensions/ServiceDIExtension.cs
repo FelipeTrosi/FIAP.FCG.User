@@ -13,6 +13,7 @@ public static class ServiceDIExtension
         services.AddTransient<IAuthService, AuthService>();
 
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IAWSSQSService, AWSSQSService>();
 
         return services;
     }

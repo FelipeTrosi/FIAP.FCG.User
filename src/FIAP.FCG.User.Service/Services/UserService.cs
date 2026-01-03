@@ -7,12 +7,13 @@ using FIAP.FCG.User.Service.Util;
 
 namespace FIAP.FCG.User.Service.Services;
 
-public class UserService(IBaseLogger<UserService> logger, IUserRepository repository) : IUserService
+public class UserService(IBaseLogger<UserService> logger, IUserRepository repository, IAWSSQSService sqsService) : IUserService
 {
     private readonly IUserRepository _repository = repository;
+    private readonly IAWSSQSService _sqsService = sqsService;
     private readonly IBaseLogger<UserService> _logger = logger;
 
-    public void Create(UserCreateDto entity)
+    public async Task Create(UserCreateDto entity)
     {
         var errors = new Dictionary<string, string[]>();
 
@@ -34,7 +35,7 @@ public class UserService(IBaseLogger<UserService> logger, IUserRepository reposi
             throw new BadRequestException("Erro de validação", errors);
 
 
-        _repository.Create(new()
+        var createdUser = _repository.Create(new()
         {
             AccessLevel = entity.AccessLevel,
             CreatedAt = DateTime.Now,
@@ -44,6 +45,8 @@ public class UserService(IBaseLogger<UserService> logger, IUserRepository reposi
         });
 
         _logger.LogInformation("Usuário cadastrado com sucesso !");
+
+        await _sqsService.PublishAsync(createdUser.Id.ToString(), createdUser.Email, createdUser.Name);
     }
 
     public void DeleteById(long id)

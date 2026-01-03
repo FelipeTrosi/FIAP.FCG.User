@@ -1,6 +1,6 @@
 using FIAP.FCG.User.API.Extensions;
+using FIAP.FCG.User.Domain.Entity;
 using FIAP.FCG.User.Infrastructure.Repository;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -84,6 +84,9 @@ builder.Services.UseJwtAuthentication(builder.Configuration);
 builder.Services.AddCorrelationIdGenerator();
 builder.Services.AddRepositoryDI();
 builder.Services.AddServiceDI();
+
+builder.Services.Configure<AWSSQSOptions>(
+    builder.Configuration.GetSection("AwsSqs"));
 
 #endregion
 
