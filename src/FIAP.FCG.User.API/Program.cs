@@ -106,8 +106,8 @@ Log.Logger = new LoggerConfiguration()
             .WriteTo.DatadogLogs(
                 apiKey: configuration["Datadog:ApiKey"],
                 source: "dotnet-application",
-                service: "fiap-fcg-api",
-                host: "fiap-fcg-api",
+                service: "fiap-fcg-user-api",
+                host: "fiap-fcg-user-api",
                 tags: new[] { "env:homolog", "version:1.0.0" }
             )
             .CreateLogger();
