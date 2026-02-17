@@ -1,55 +1,36 @@
-# Etapa base: runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 3001
-ENV ASPNETCORE_HTTP_PORTS=3001
-
-# Etapa de build
+# Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copiar os .csproj primeiro
-COPY FIAP.FCG.User.API/FIAP.FCG.User.API.csproj FIAP.FCG.User.API/
-COPY FIAP.FCG.User.Domain/FIAP.FCG.User.Domain.csproj FIAP.FCG.User.Domain/
-COPY FIAP.FCG.User.Infrastructure/FIAP.FCG.User.Infrastructure.csproj FIAP.FCG.User.Infrastructure/
-COPY FIAP.FCG.User.Service/FIAP.FCG.User.Service.csproj FIAP.FCG.User.Service/
+COPY ["FIAP.FCG.Contracts/FIAP.FCG.Contracts.csproj", "FIAP.FCG.Contracts/"]
+COPY ["FIAP.FCG.User.API/FIAP.FCG.User.API.csproj", "FIAP.FCG.User.API/"]
+COPY ["FIAP.FCG.User.Infrastructure/FIAP.FCG.User.Infrastructure.csproj", "FIAP.FCG.User.Infrastructure/"]
+COPY ["FIAP.FCG.User.Domain/FIAP.FCG.User.Domain.csproj", "FIAP.FCG.User.Domain/"]
+COPY ["FIAP.FCG.User.Service/FIAP.FCG.User.Service.csproj", "FIAP.FCG.User.Service/"]
 
-# Restaurar dependências
-RUN dotnet restore FIAP.FCG.User.API/FIAP.FCG.User.API.csproj
-RUN dotnet restore FIAP.FCG.User.Infrastructure/FIAP.FCG.User.Infrastructure.csproj 
-RUN dotnet restore FIAP.FCG.User.Service/FIAP.FCG.User.Service.csproj 
+RUN dotnet restore "FIAP.FCG.User.API/FIAP.FCG.User.API.csproj"
 
-# Copiar o restante dos arquivos
-COPY FIAP.FCG.User.API/ FIAP.FCG.User.API/
-COPY FIAP.FCG.User.Domain/ FIAP.FCG.User.Domain/
-COPY FIAP.FCG.User.Infrastructure/ FIAP.FCG.User.Infrastructure/
-COPY FIAP.FCG.User.Service/ FIAP.FCG.User.Service/
+COPY . .
 
-# Build
-WORKDIR /src/FIAP.FCG.User.API
-RUN dotnet build FIAP.FCG.User.API.csproj -c Release -o /app/build
+WORKDIR "/src/FIAP.FCG.User.API"
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
-# Publish
-FROM build AS publish
-WORKDIR /src/FIAP.FCG.User.API
-RUN dotnet publish FIAP.FCG.User.API.csproj -c Release -o /app/publish
-FROM base AS final
+# Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS runtime
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 WORKDIR /app
+COPY --from=build /app/publish .
 
-# Instalar Datadog .NET Tracer 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl ca-certificates \
-    && curl -LO https://github.com/DataDog/dd-trace-dotnet/releases/download/v3.6.0/datadog-dotnet-apm_3.6.0_amd64.deb \
-    && dpkg -i ./datadog-dotnet-apm_3.6.0_amd64.deb \
-    && rm ./datadog-dotnet-apm_3.6.0_amd64.deb \
-    && rm -rf /var/lib/apt/lists/*
+ENV ASPNETCORE_URLS=http://+:3001
+ENV ASPNETCORE_ENVIRONMENT=Production
 
-COPY --from=publish /app/publish .
+EXPOSE 3001
 
-ENV CORECLR_ENABLE_PROFILING=1 \
-    CORECLR_PROFILER="{846F5F1C-F9AE-4B07-969E-05C26BC060D8}" \
-    CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so \
-    DD_DOTNET_TRACER_HOME=/opt/datadog \
-    DD_LOGS_INJECTION=true
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD wget -qO- http://localhost:3001/health || exit 1
+
+USER appuser
 
 ENTRYPOINT ["dotnet", "FIAP.FCG.User.API.dll"]

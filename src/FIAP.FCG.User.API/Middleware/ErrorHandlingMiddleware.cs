@@ -64,7 +64,7 @@ public class ErrorHandlingMiddleware
 
             await context.Response.WriteAsJsonAsync(new
             {
-                message = "Erro interno no servidor. Tente novamente mais tarde."
+                message = $"Erro interno no servidor. Tente novamente mais tarde. {ex.Message}"
             });
         }
     }

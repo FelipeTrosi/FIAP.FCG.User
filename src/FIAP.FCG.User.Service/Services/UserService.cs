@@ -1,52 +1,73 @@
-﻿using FIAP.FCG.User.Infrastructure.Logger;
+﻿using FIAP.FCG.Contracts.Messaging.Events;
+using FIAP.FCG.User.Infrastructure.Logger;
 using FIAP.FCG.User.Infrastructure.Repository.Interfaces;
 using FIAP.FCG.User.Service.Dto.User;
 using FIAP.FCG.User.Service.Exceptions;
 using FIAP.FCG.User.Service.Interfaces;
 using FIAP.FCG.User.Service.Util;
+using MassTransit;
 
 namespace FIAP.FCG.User.Service.Services;
 
-public class UserService(IBaseLogger<UserService> logger, IUserRepository repository, IAWSSQSService sqsService) : IUserService
+public class UserService(IBaseLogger<UserService> logger, IUserRepository repository, ISendEndpointProvider send) : IUserService
 {
     private readonly IUserRepository _repository = repository;
-    private readonly IAWSSQSService _sqsService = sqsService;
     private readonly IBaseLogger<UserService> _logger = logger;
+    private readonly ISendEndpointProvider _send = send;
 
     public async Task Create(UserCreateDto entity)
     {
-        var errors = new Dictionary<string, string[]>();
-
-        _logger.LogInformation("Iniciando serviço 'CREATE' de usuário !");
-
-        if (!ValidatorService.IsValidEmail(entity.Email))
+        try
         {
-            _logger.LogError("Email inválido");
-            errors["Email"] = ["Email inválido"];
+            var errors = new Dictionary<string, string[]>();
+
+            _logger.LogInformation("Iniciando serviço 'CREATE' de usuário !");
+
+            if (!ValidatorService.IsValidEmail(entity.Email))
+            {
+                _logger.LogError("Email inválido");
+                errors["Email"] = ["Email inválido"];
+            }
+
+            if (!ValidatorService.IsValidPassword(entity.Password))
+            {
+                _logger.LogError("Senha deve conter letras, números e caracteres especiais, com pelo menos 8 caracteres.");
+                errors["Senha"] = ["Senha deve conter letras, números e caracteres especiais, com pelo menos 8 caracteres."];
+            }
+
+            if (errors.Any())
+                throw new BadRequestException("Erro de validação", errors);
+
+
+            var createdUser = _repository.Create(new()
+            {
+                AccessLevel = entity.AccessLevel,
+                CreatedAt = DateTime.Now,
+                Email = entity.Email,
+                Name = entity.Name,
+                Password = entity.Password
+            });
+
+            _logger.LogInformation("Usuário cadastrado com sucesso !");
+
+            var endpoint = await _send.GetSendEndpoint(new Uri("queue:user-created"));
+
+            await endpoint.Send<UserCreated>(new
+            {
+                UserId = createdUser.Id,
+                Email = createdUser.Email,
+                Name = createdUser.Name,
+                Timestamp = DateTime.UtcNow
+            });
+
+            _logger.LogInformation("Mensagem enviada para queue:user-created");
+
         }
-
-        if (!ValidatorService.IsValidPassword(entity.Password))
+        catch (Exception e)
         {
-            _logger.LogError("Senha deve conter letras, números e caracteres especiais, com pelo menos 8 caracteres.");
-            errors["Senha"] = ["Senha deve conter letras, números e caracteres especiais, com pelo menos 8 caracteres."];
+            _logger.LogError(e.Message);
+            throw;
         }
-
-        if (errors.Any())
-            throw new BadRequestException("Erro de validação", errors);
-
-
-        var createdUser = _repository.Create(new()
-        {
-            AccessLevel = entity.AccessLevel,
-            CreatedAt = DateTime.Now,
-            Email = entity.Email,
-            Name = entity.Name,
-            Password = entity.Password
-        });
-
-        _logger.LogInformation("Usuário cadastrado com sucesso !");
-
-        await _sqsService.PublishAsync(createdUser.Id.ToString(), createdUser.Email, createdUser.Name);
     }
 
     public void DeleteById(long id)
@@ -91,7 +112,7 @@ public class UserService(IBaseLogger<UserService> logger, IUserRepository reposi
     public void Update(UserUpdateDto entity)
     {
         var errors = new Dictionary<string, string[]>();
-        
+
         _logger.LogInformation($"Iniciando serviço 'UPDATE' de usuário com Id {entity.Id}!");
 
         if (!ValidatorService.IsValidEmail(entity.Email))
@@ -127,6 +148,6 @@ public class UserService(IBaseLogger<UserService> logger, IUserRepository reposi
         var result = _repository.GetByUserAndPassword(user, password) ?? throw new UnauthorizedException("Login inválido !");
         return ParseModel.Map<UserOutputDto>(result);
     }
-    
+
 
 }

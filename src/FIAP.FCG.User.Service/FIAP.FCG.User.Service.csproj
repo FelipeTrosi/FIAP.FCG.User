@@ -17,10 +17,12 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.SQS" Version="4.0.2.9" />
+    <PackageReference Include="MassTransit" Version="8.5.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FIAP.FCG.Contracts\FIAP.FCG.Contracts.csproj" />
     <ProjectReference Include="..\FIAP.FCG.User.Domain\FIAP.FCG.User.Domain.csproj" />
     <ProjectReference Include="..\FIAP.FCG.User.Infrastructure\FIAP.FCG.User.Infrastructure.csproj" />
   </ItemGroup>

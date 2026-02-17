@@ -62,7 +62,7 @@ public class UserController(IUserService service) : ControllerBase
     /// <response code="200">Usuário encontrado.</response>
     /// <response code="404">Usuário não encontrado.</response>
     [HttpGet("GetById/{id:long}")]
-    [Authorize]
+    //[Authorize]
     public IActionResult GetById(long id)
     {
         return Ok(_service.GetById(id));

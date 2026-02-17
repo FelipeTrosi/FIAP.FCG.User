@@ -79,6 +79,12 @@ builder.Services.UseJwtAuthentication(builder.Configuration);
 
 #endregion
 
+#region -- RabbitMq
+
+builder.Services.UseMassTransit(builder.Configuration);
+
+#endregion
+
 #region -- DI
 
 builder.Services.AddCorrelationIdGenerator();
@@ -139,5 +145,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHealthChecks("/health");
+
+app.MapGet("/health", () => Results.Ok("Healthy"));
 
 app.Run();

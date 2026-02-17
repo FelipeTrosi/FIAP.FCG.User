@@ -13,10 +13,20 @@
     "API (Local - SSH Tunnel)": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:3001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:3001"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:3001",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:3001"
+      },
+      "distributionName": ""
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
