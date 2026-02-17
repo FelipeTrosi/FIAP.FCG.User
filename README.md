@@ -51,6 +51,4 @@ Esse usuário possuí nível de acesso 'Admin' para relializar o CRUD de usuári
 
 - [github.com/FelipeTrosi](https://github.com/FelipeTrosi/FIAP.FCG)
 
-## 🎥 Apresentação em Vídeo
 
-- [Vídeo demonstrando todos os requisitos](https://www.yuotube.com)
